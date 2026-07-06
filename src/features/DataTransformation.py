@@ -9,7 +9,7 @@
 
 # Updated by Dave Ebbelaar on 22-12-2022
 
-from sklearn.decomposition import PCA
+from sklearn.decomposition import PCA as SklearnPCA
 from scipy.signal import butter, lfilter, filtfilt
 import copy
 import pandas as pd
@@ -65,7 +65,7 @@ class PrincipalComponentAnalysis:
         dt_norm = self.normalize_dataset(data_table, cols)
 
         # perform the PCA.
-        self.pca = PCA(n_components=len(cols))
+        self.pca = SklearnPCA(n_components=len(cols))
         self.pca.fit(dt_norm[cols])
         # And return the explained variances.
         return self.pca.explained_variance_ratio_
@@ -78,7 +78,7 @@ class PrincipalComponentAnalysis:
         dt_norm = self.normalize_dataset(data_table, cols)
 
         # perform the PCA.
-        self.pca = PCA(n_components=number_comp)
+        self.pca = SklearnPCA(n_components=number_comp)
         self.pca.fit(dt_norm[cols])
 
         # Transform our old values.
