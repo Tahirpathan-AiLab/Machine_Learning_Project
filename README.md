@@ -94,3 +94,269 @@ K-Means clustering groups similar movement patterns by minimizing intra-cluster 
 ### Feature Export
 
 The final engineered dataset is exported as a Pickle file, allowing future machine learning models to directly use the generated features without repeating the complete feature engineering pipeline.
+
+---
+
+## Key Features
+
+* Loads the cleaned dataset generated after statistical outlier removal
+* Handles missing values using linear interpolation
+* Calculates workout duration for every exercise set
+* Computes average duration for different weight categories
+* Applies a Butterworth Low-Pass Filter to remove high-frequency sensor noise
+* Smooths accelerometer and gyroscope signals while preserving movement patterns
+* Performs Principal Component Analysis (PCA) for dimensionality reduction
+* Generates principal component features while retaining maximum variance
+* Calculates vector magnitude features for both accelerometer and gyroscope sensors
+* Performs Temporal Abstraction using rolling statistical windows
+* Extracts rolling mean and rolling standard deviation features
+* Applies Fast Fourier Transformation (FFT) for frequency-domain feature extraction
+* Computes dominant frequency, weighted frequency, and Power Spectral Entropy (PSE)
+* Generates FFT amplitudes across multiple frequency bins
+* Uses K-Means clustering to discover similar movement patterns
+* Determines the optimal number of clusters using the Elbow Method
+* Visualizes intermediate processing steps throughout the pipeline
+* Produces a comprehensive feature-rich dataset ready for machine learning
+* Exports the final engineered dataset as a reusable Pickle file
+
+---
+
+## Workflow
+
+<p align="center">
+  <img src="https://img.shields.io/badge/1-Import%20Libraries-4CAF50?style=for-the-badge"/>
+</p>
+
+<p align="center">⬇️</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/2-Load%20Cleaned%20Dataset-2196F3?style=for-the-badge"/>
+</p>
+
+<p align="center">⬇️</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/3-Handle%20Missing%20Values-FF9800?style=for-the-badge"/>
+</p>
+
+<p align="center">⬇️</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/4-Calculate%20Workout%20Duration-E91E63?style=for-the-badge"/>
+</p>
+
+<p align="center">⬇️</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/5-Butterworth%20Low--Pass%20Filtering-9C27B0?style=for-the-badge"/>
+</p>
+
+<p align="center">⬇️</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/6-Principal%20Component%20Analysis-00BCD4?style=for-the-badge"/>
+</p>
+
+<p align="center">⬇️</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/7-Generate%20Vector%20Magnitude-795548?style=for-the-badge"/>
+</p>
+
+<p align="center">⬇️</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/8-Temporal%20Feature%20Extraction-607D8B?style=for-the-badge"/>
+</p>
+
+<p align="center">⬇️</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/9-Frequency%20Feature%20Extraction-3F51B5?style=for-the-badge"/>
+</p>
+
+<p align="center">⬇️</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/10-K--Means%20Clustering-009688?style=for-the-badge"/>
+</p>
+
+<p align="center">⬇️</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/11-Generate%20Feature%20Dataset-8BC34A?style=for-the-badge"/>
+</p>
+
+<p align="center">⬇️</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/12-Export%20Features-4CAF50?style=for-the-badge"/>
+</p>
+
+---
+
+## Technologies Used
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=python" alt="Python"/>
+  <img src="https://skillicons.dev/icons?i=vscode" alt="VS Code"/>
+  <img src="https://skillicons.dev/icons?i=git" alt="Git"/>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
+  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/SciPy-8CAAE6?style=for-the-badge&logo=scipy&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Fast%20Fourier%20Transform-673AB7?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Butterworth%20Filter-009688?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Pickle-FFCA28?style=for-the-badge"/>
+</p>
+
+---
+
+## Project Structure
+
+```text
+Machine_Learning_Project
+│
+├── data
+│   ├── raw
+│   │   └── MetaMotion
+│   │       ├── Accelerometer CSV Files
+│   │       └── Gyroscope CSV Files
+│   │
+│   └── interim
+│       ├── data_processed.pkl
+│       ├── outliers_removed_chauvenet.pkl
+│       └── data_features.pkl
+│
+├── src
+│   ├── features
+│   │   ├── build_features.py
+│   │   ├── remove_outliers.py
+│   │   ├── count_repetitions.py
+│   │   ├── DataTransformation.py
+│   │   ├── TemporalAbstraction.py
+│   │   └── FrequencyAbstraction.py
+│   │
+│   └── models
+│       └── ...
+│
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Generated Features
+
+The final dataset contains a rich collection of engineered features extracted from the original accelerometer and gyroscope recordings.
+
+### Original Sensor Features
+
+- acc_x
+- acc_y
+- acc_z
+- gyr_x
+- gyr_y
+- gyr_z
+
+### Principal Components
+
+- pca_1
+- pca_2
+- pca_3
+
+### Vector Magnitude Features
+
+- acc_r
+- gyr_r
+
+### Temporal Features
+
+Rolling Mean
+
+- acc_x_temp_mean
+- acc_y_temp_mean
+- acc_z_temp_mean
+- gyr_x_temp_mean
+- gyr_y_temp_mean
+- gyr_z_temp_mean
+- acc_r_temp_mean
+- gyr_r_temp_mean
+
+Rolling Standard Deviation
+
+- acc_x_temp_std
+- acc_y_temp_std
+- acc_z_temp_std
+- gyr_x_temp_std
+- gyr_y_temp_std
+- gyr_z_temp_std
+- acc_r_temp_std
+- gyr_r_temp_std
+
+### Frequency Features
+
+For every predictor column the following features are generated:
+
+- Maximum Frequency
+- Weighted Frequency
+- Power Spectral Entropy (PSE)
+- FFT amplitudes across multiple frequency bins
+
+### Clustering Features
+
+- Cluster ID generated using K-Means
+
+---
+
+## Output
+
+After successful execution, the project generates:
+
+* **data_features.pkl** – Complete feature engineered dataset ready for machine learning.
+* Smoothed accelerometer and gyroscope signals after Butterworth filtering.
+* Principal Component Analysis (PCA) features.
+* Accelerometer and gyroscope vector magnitude features.
+* Rolling mean and rolling standard deviation features.
+* Frequency-domain features generated using Fast Fourier Transformation.
+* Dominant frequency and Power Spectral Entropy measurements.
+* K-Means cluster labels for every observation.
+* Multiple visualization plots demonstrating each feature engineering stage.
+* A reusable dataset suitable for classification, clustering, and repetition counting.
+
+---
+
+## Applications
+
+The generated feature dataset can directly be used for several wearable AI and machine learning applications, including:
+
+* Barbell Exercise Classification
+* Automatic Repetition Counting
+* Human Activity Recognition (HAR)
+* Workout Monitoring
+* Athlete Performance Analysis
+* Smart Fitness Assistants
+* Wearable AI Applications
+* Movement Pattern Recognition
+* Exercise Recommendation Systems
+* Sports Analytics
+
+---
+
+## Acknowledgements
+
+The original MetaMotion wearable sensor dataset used in this project was collected by **Dave Ebbelaar** and his collaborators as part of the **Machine Learning for the Quantified Self** learning materials inspired by the work of **Mark Hoogendoorn** and **Burkhardt Funk**.
+
+This repository focuses on the complete feature engineering pipeline built on top of the cleaned dataset. All preprocessing, signal transformation, temporal abstraction, frequency analysis, clustering, visualization, and feature generation workflows were implemented in Python to prepare high-quality inputs for machine learning models.
+
+---
+
+## Conclusion
+
+This project represents the **Feature Engineering** stage of my Machine Learning pipeline. It builds upon the cleaned sensor dataset by transforming raw accelerometer and gyroscope measurements into meaningful numerical representations using modern signal processing, statistical analysis, dimensionality reduction, temporal abstraction, frequency-domain analysis, and unsupervised learning techniques.
+
+The resulting feature-rich dataset captures both spatial and temporal characteristics of human movement, making it highly suitable for machine learning algorithms that perform exercise classification, repetition counting, and human activity recognition. By combining multiple feature extraction techniques into a single reproducible workflow, the project provides a scalable foundation for developing intelligent wearable fitness applications and real-time activity recognition systems.
