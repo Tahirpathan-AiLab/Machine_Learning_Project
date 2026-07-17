@@ -121,7 +121,7 @@ The final engineered dataset is exported as a Pickle file, allowing future machi
 
 ---
 
-## Workflow
+## Project Workflow
 
 <p align="center">
   <img src="https://img.shields.io/badge/1-Import%20Libraries-4CAF50?style=for-the-badge"/>
